@@ -1,0 +1,129 @@
+* {
+    font-family: "Monolisa", monospace;
+}
+
+
+
+body {
+    background-color: turquoise;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.centred {
+    display: grid;
+    place-content: center;
+}
+
+
+.parent-container {
+    display: grid;
+    
+    width: 100vw;
+    
+    place-items: center;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    
+    gap: 10px;
+}
+
+
+.course-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 25vh;
+    border-style: solid;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+.course-container:hover {
+    cursor: pointer;
+}
+
+
+
+.deck-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 25vh;
+    border-style: solid;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+.deck-container:hover {
+    cursor: pointer;
+}
+
+#cards {
+    display: grid;
+    gap: 10px;
+}
+
+
+.card-preview {
+    display: grid;
+
+    width: 90vw;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    border-style: solid;
+    border-color: blue;
+    border-radius: 5px;
+}
+
+.card-side-preview {
+    padding-left: 15px;
+}
+
+.card-side-preview:nth-child(1) {
+    
+    border-right: 3px dashed grey;
+}
+
+#options {
+    display: grid;
+    place-items: center;
+    width: 25vw;
+    gap: 25px;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+}
+
+.deck-option {
+    width: 100%;
+    cursor: pointer;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: blue;
+}
+
+
+
+
+@media only screen and (max-width: 800px){
+
+    .parent-container{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media only screen and (min-width: 1200px){
+
+    .parent-container{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
