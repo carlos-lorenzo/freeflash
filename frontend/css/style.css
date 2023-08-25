@@ -1,4 +1,14 @@
 
+:root {
+	--global--color-primary: #734B5E;
+    --global--color-secondary: #F7F7FF;
+
+    --global--color-weak: #FC7A1E;
+    --global--color-medium: #FFC759;
+    --global--color-strong: #55868C;
+
+}
+
 * {
     font-family: "Monolisa", monospace;
     -webkit-user-select: none; /* Safari */
@@ -8,20 +18,27 @@
 }
 
 body {
-    background-color: turquoise;
-    color: black;
+    background-color: var(--global--color-primary);
+    color: var(--global--color-secondary);
+    
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: var(--global--color-secondary);
 }
 
 img {
-    max-width: 100%;
-    max-height: 60%;
+    display: block;
+    object-fit: contain;
+    width: 100%;
+    height: 80%;
 }
 
+i {
+    font-size: 20px;
+    z-index: 3;
+}
 .centred {
     display: grid;
     place-content: center;
@@ -49,7 +66,7 @@ img {
     width: 90%;
     height: 25vh;
     border-style: solid;
-    border-color: blue;
+    border-color: var(--global--color-secondary);
     border-radius: 5px;
 }
 
@@ -58,21 +75,29 @@ img {
 }
 
 
+.deck-name {
+    transition: transform 250ms ease-in-out;
+    cursor: pointer;
+}
+
+.study-deck {
+    transition: all 250ms ease-in-out;
+    cursor: pointer;
+    
+}
 
 .deck-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 90%;
     height: 25vh;
     border-style: solid;
-    border-color: blue;
+    border-color: var(--global--color-secondary);
     border-radius: 5px;
 }
 
-.deck-container:hover {
-    cursor: pointer;
-}
 
 #cards {
     display: grid;
@@ -88,7 +113,7 @@ img {
     grid-template-rows: 1fr;
 
     border-style: solid;
-    border-color: blue;
+    border-color: var(--global--color-secondary);
     border-radius: 5px;
 }
 
@@ -98,16 +123,15 @@ img {
 
 .card-side-preview:nth-child(1) {
     
-    border-right: 3px dashed grey;
+    border-right: 3px dashed var(--global--color-secondary);
 }
 
 #options {
-    display: grid;
-    place-items: center;
-    width: 25vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 25px;
-    grid-template-columns: 1fr;
-    padding: 10px;
 }
 
 .deck-option {
@@ -115,14 +139,19 @@ img {
     cursor: pointer;
     border-style: solid;
     border-radius: 5px;
-    border-color: blue;
+    border-color: var(--global--color-secondary);
+}
+
+#study {
+    cursor: pointer;
 }
 
 #card {
     display: grid;
+    background-color: var(--global--color-primary);
     width: 90vw;
     height: 65vh;
-    border: 5px solid blue;
+    border: 5px solid;
     border-radius: 5px;
     margin-bottom: 15px;
     cursor: pointer;
@@ -145,16 +174,26 @@ img {
     justify-content: center;
     align-items: center;
 
-    border: 5px solid blue;
+    border: 5px solid;
     border-radius: 5px;
 }
 
+.confidence:nth-child(1) {
+    border-color: var(--global--color-weak);
+}
+.confidence:nth-child(2) {
+    border-color: var(--global--color-medium);
+}
+.confidence:nth-child(3) {
+    border-color: var(--global--color-strong);
+}
 
 #prompt {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    height: inherit;
+    width: inherit;
+    place-items: center;
 }
 
 #prompt-text {
@@ -178,11 +217,12 @@ img {
 
     .card-side-preview:nth-child(1) {
     
-        border-right: 0px dashed grey;
-        border-bottom: 3px dashed grey;
+        border-right: 0px dashed;
+        border-bottom: 3px dashed var(--global--color-secondary);
     }
 
     #confidence-form {
+        
         height: 40vh;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr;

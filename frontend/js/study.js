@@ -4,15 +4,18 @@ const course = parameters.get('course');
 const deck = parameters.get('deck');
 
 var state = "question";
+var confidenceColours = ["#FC7A1E", "#FFC759", "#55868C"]
+
 
 fetch(`http://192.168.1.53:8000/api/next_card?course=${course}&deck=${deck}`, {method: "GET"})
 .then(response => response.json())
 .then(data => {
-    console.log(data);
+    
+    document.getElementById("card").style.borderColor = confidenceColours[(data.confidence - 1)];
 
     document.getElementById("prompt-text").innerText = data.question;
 
-    updateImage(data, state)
+    updateImage(data, state);
 
     document.getElementById("card").addEventListener("click", function(){
         if (state == "question")
@@ -30,6 +33,7 @@ fetch(`http://192.168.1.53:8000/api/next_card?course=${course}&deck=${deck}`, {m
     })
 
     document.addEventListener('keyup', event => {
+
         if (event.code === 'Space') {
             if (state == "question")
             {
@@ -42,8 +46,21 @@ fetch(`http://192.168.1.53:8000/api/next_card?course=${course}&deck=${deck}`, {m
                 state = "question";
             }
     
-            updateImage(data, state); //whatever you want to do when space is pressed
-        }
+            updateImage(data, state);
+
+        } else if (event.code === "Digit1") {
+            updateConfidence(data.id, 1);
+
+        } else if (event.code === "Digit2") {
+            updateConfidence(data.id, 2);
+
+        } else if (event.code === "Digit3") {
+            updateConfidence(data.id, 3);
+
+        } 
+
+        
+
       })
 
     let confidences = document.getElementsByClassName("confidence")
@@ -51,7 +68,6 @@ fetch(`http://192.168.1.53:8000/api/next_card?course=${course}&deck=${deck}`, {m
     for (let i = 0; i < confidences.length; i++) {
         confidences[i].addEventListener("click", function(){
             updateConfidence(data.id, confidences[i].id);
-            //window.location.reload();
         })
     }
     
@@ -59,10 +75,7 @@ fetch(`http://192.168.1.53:8000/api/next_card?course=${course}&deck=${deck}`, {m
 
 function updateConfidence(id, confidence) {
     fetch(`http://192.168.1.53:8000/api/update_confidence?id=${id}&confidence=${confidence}`, {method: "GET"})
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    })
+    window.location.reload();
 }
 
 function updateImage(data, state) {
@@ -72,8 +85,15 @@ function updateImage(data, state) {
     if (image_path) {
         img.src = image_path;
         img.style.visibility = "visible";
+
+        if (!data[state]) {
+            document.getElementById("prompt").style.gridTemplateRows = "1fr";
+        } else {
+            document.getElementById("prompt").style.gridTemplateRows = "1fr 3fr";
+        }
     } else {
         img.style.visibility = "hidden";
+        document.getElementById("prompt").style.gridTemplateRows = "1fr";
     }
     
 }

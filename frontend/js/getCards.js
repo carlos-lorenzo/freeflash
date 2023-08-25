@@ -4,6 +4,10 @@ const parameters = new URLSearchParams(queryString);
 const course = parameters.get('course');
 const deck = parameters.get('deck');
 
+
+
+document.getElementById("deck-info").innerText = `${course} - ${deck}`;
+
 document.getElementById("study").addEventListener("click", function() {
     window.open(`study.html?course=${course}&deck=${deck}`, "_self")
 })
