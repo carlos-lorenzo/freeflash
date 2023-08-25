@@ -76,3 +76,27 @@ def get_card_to_study(request):
     
     
     return Response(serialiser.data)
+
+
+@api_view(["GET"])
+def update_card_confidence(request):
+    
+
+    confidence = request.query_params.get("confidence")
+    
+    if int(confidence) not in range(1, 4):
+        return Response({"error": "invalid confidence"})
+    
+    card_id = request.query_params.get("id")
+    
+    
+    cards = Card.objects.all()
+    card_to_update = cards.filter(id=card_id)[0]
+    card_to_update.confidence = confidence
+    card_to_update.save()
+    
+    
+    return Response({"status": "confidence updated"})
+
+        
+    

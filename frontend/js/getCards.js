@@ -11,7 +11,6 @@ document.getElementById("study").addEventListener("click", function() {
 fetch(`http://192.168.1.53:8000/api/deck_cards?course=${course}&deck=${deck}`, {method: "GET"})
 .then(response => response.json())
 .then(data => {
-    console.log(data);
     data.forEach(card => {
         let cardContainer = document.createElement("div");
         cardContainer.className = "card-preview"
