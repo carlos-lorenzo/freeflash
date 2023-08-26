@@ -4,15 +4,11 @@ const parameters = new URLSearchParams(queryString);
 const course = parameters.get('course');
 
 
-
-
-
 fetch(`http://192.168.1.53:8000/api/course_decks/?course=${course}`, {method: "GET"})
 .then(response => response.json())
 .then(data => {
     
     data.forEach(deck => {
-        
 
         let deckContainer = document.createElement("div");
         deckContainer.className = "container"

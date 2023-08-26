@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path("get_csrf_token/", views.get_csrf_token),
     path("courses/", views.get_courses),
     path("decks/", views.get_decks),
     path("cards/", views.get_cards),

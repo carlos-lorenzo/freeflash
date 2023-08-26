@@ -23,6 +23,15 @@ body {
     
 }
 
+
+h1 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
 a {
     text-decoration: none;
     color: var(--global--color-secondary);
@@ -36,9 +45,43 @@ img {
 }
 
 i {
-    font-size: 20px;
+    font-size: 35px;
     z-index: 3;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    
+    
+}
+
+
+
+input[type="text"] {
+    color: var(--global--color-strong) ;
+    outline: none;
+    border: 3px solid var(--global--color-strong);
+    
+    background-color: transparent;
+    font-size: 25px;
+}
+
+::placeholder {
+    color: var(--global--color-strong);
+}
+
+input[type="submit"] {
+    color: var(--global--color-strong);
+    font-size: 20px;
+    background-color: transparent;
+    border: 3px solid var(--global--color-strong);
+    border-radius: 5px;
+}
+
 .centred {
     display: grid;
     place-content: center;
@@ -47,6 +90,31 @@ i {
 .pointer {
     cursor: pointer;
 }
+
+.popup {
+    padding: 25px;
+    background-color: var(--global--color-secondary);
+    border-radius: 10px;
+    opacity: 1;
+    min-width: 25vw;
+    max-width: 95vw;
+    height: 15vh;
+    border: 5px solid var(--global--color-strong);
+    scale: 0;
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+}
+
+.close {
+    position: absolute;
+    top: 13%;
+    left: 95%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    
+    
+}
+
 
 .centred-absolute {
     position: absolute;
@@ -213,7 +281,7 @@ i {
     height: 100%;
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 1075px){
 
     .parent-container{
         grid-template-columns: 1fr;
@@ -246,7 +314,6 @@ i {
     }
 
 }
-
 
 @media only screen and (min-width: 1200px){
 

@@ -7,6 +7,14 @@ from django.views.decorators.csrf import csrf_exempt
 from app.models import Course, Deck, Card
 from .serialiser import CourseSerialiser, DeckSerialiser, CardSerialiser
 
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
+
+@api_view(["GET"])
+def get_csrf_token(request):
+    csrf_token = get_token(request)
+    return JsonResponse({'csrfToken': csrf_token})
+
 
 @api_view(["GET"])
 def get_courses(request):
@@ -99,7 +107,7 @@ def update_card_confidence(request):
     
     return Response({"status": "confidence updated"})
 
-@csrf_exempt   
+
 @api_view(["POST",])
 def create_course(request):
     
@@ -122,5 +130,5 @@ def create_course(request):
                          "reason": "invalid post data"})
         
 
-# Remove course view
+
     

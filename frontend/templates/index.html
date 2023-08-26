@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Flash</title>
     <link rel="stylesheet" href="/frontend/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     
     <h1 class="centred"><a href="/frontend/templates/index.html">Free Flash</a></h1>
     <div id="courses" class="parent-container"></div>
-    <div class="popup centred-absolute">
-        <form action="http://192.168.1.53:8000/api/new_course/" method="post">
-            <label for="name">name</label>
-            <input type="text" name="name">
-            <input type="submit">
+    <div class="popup centred-absolute centred pointer" id="course-container">
+        <i class="fa-solid fa-x close" style="color: #55868C;" id="close-popup"></i>
+        <form action="http://192.168.1.53:8000/api/new_course/" method="post" id="course-form">
+            <input type="text" name="name" placeholder="Course name">
+            <input type="submit" value="Create" class="pointer">
         </form>
     </div>
     <script src="/frontend/js/getCourses.js"></script>
+    <script src="/frontend/js/newCourse.js"></script>
+    
 </body>
 </html>
