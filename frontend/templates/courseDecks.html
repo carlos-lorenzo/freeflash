@@ -9,8 +9,14 @@
 </head>
 <body>
     <h1 class="centred"><a href="/frontend/templates/index.html">Free Flash</a></h1>
-
     <div id="decks" class="parent-container"></div>
+    <div class="popup centred-absolute centred pointer" id="deck-container">
+        <i class="fa-solid fa-x close" style="color: #55868C;" id="close-popup"></i>
+        <form action="http://192.168.1.53:8000/api/new_deck/" method="post" id="deck-form">
+            <input type="text" name="name" placeholder="Deck name" autocomplete="off">
+            <input type="submit" value="Create" class="pointer">
+        </form>
+    </div>
     <script src="/frontend/js/getDecks.js"></script>
 </body>
 </html>

@@ -30,6 +30,7 @@ addCourse.className = "pointer container";
 addCourse.style.order = courses.children.length + 1;
 var addIcon = document.createElement("i");
 addIcon.className = "fa-solid fa-plus";
+addIcon.style.zIndex = "1";
 addCourse.appendChild(addIcon);
 
 addCourse.addEventListener("click", function(){

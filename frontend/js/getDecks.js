@@ -27,6 +27,7 @@ fetch(`http://192.168.1.53:8000/api/course_decks/?course=${course}`, {method: "G
         let studyIcon = document.createElement("i");
         studyIcon.className = "fa-solid fa-book-bookmark study-deck pointer";
         studyIcon.style.opacity = 0;
+        
 
         studyIcon.addEventListener("click", function() {
             window.open(`study.html?course=${course}&deck=${deck.name}`, "_self");
@@ -54,3 +55,26 @@ fetch(`http://192.168.1.53:8000/api/course_decks/?course=${course}`, {method: "G
 
     });
 })
+
+
+var deckForm = document.getElementById("deck-container");
+
+var addDeck = document.createElement("div");
+addDeck.className = "pointer container";
+addDeck.style.order = decks.children.length + 1;
+var addIcon = document.createElement("i");
+addIcon.className = "fa-solid fa-plus";
+addIcon.style.zIndex = "1";
+addDeck.appendChild(addIcon);
+
+addDeck.addEventListener("click", function(){
+    deckForm.style.scale = 1;
+    deckForm.style.opacity = 1;
+})
+
+document.getElementById("close-popup").addEventListener("click", function(){
+    deckForm.style.scale = 0;
+    deckForm.style.opacity = 0;
+})
+
+decks.appendChild(addDeck);
