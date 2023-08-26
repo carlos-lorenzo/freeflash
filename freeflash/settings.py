@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.1.53']
 
+CSRF_TRUSTED_ORIGINS = ['http://192.168.1.53:5500']
 
 # Application definition
 
@@ -49,13 +50,13 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
+    
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     
     
-    "django.middleware.common.CommonMiddleware",
+   
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True

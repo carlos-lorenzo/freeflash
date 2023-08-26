@@ -6,10 +6,15 @@ const deck = parameters.get('deck');
 
 
 
-document.getElementById("deck-info").innerText = `${course} - ${deck}`;
+let deckInfo = document.getElementById("deck-info");
+deckInfo.innerText = `${course} - ${deck}`;
+deckInfo.className = "pointer"
+deckInfo.addEventListener("click", function() {
+    window.open(`courseDecks.html?course=${course}`, "_self");
+})
 
 document.getElementById("study").addEventListener("click", function() {
-    window.open(`study.html?course=${course}&deck=${deck}`, "_self")
+    window.open(`study.html?course=${course}&deck=${deck}`, "_self");
 })
 
 fetch(`http://192.168.1.53:8000/api/deck_cards?course=${course}&deck=${deck}`, {method: "GET"})
@@ -24,7 +29,15 @@ fetch(`http://192.168.1.53:8000/api/deck_cards?course=${course}&deck=${deck}`, {
         let questionText = document.createElement("h3");
         questionText.innerText = `Q\n\n${card.question}`;
         questionContainer.appendChild(questionText);
-
+        
+        if (hasImage(card, "question")) {
+            
+            let questionImage = document.createElement("img");
+            questionImage.src = card.question_image;
+            questionImage.className = "image-preview";
+            questionContainer.appendChild(questionImage);
+        } 
+        
         cardContainer.appendChild(questionContainer);
 
 
@@ -33,6 +46,15 @@ fetch(`http://192.168.1.53:8000/api/deck_cards?course=${course}&deck=${deck}`, {
         let answerText = document.createElement("h3");
         answerText.innerText = `A\n\n${card.answer}`;
         answerContainer.appendChild(answerText);
+
+        if (hasImage(card, "answer")) {
+           
+            let answerImage = document.createElement("img");
+            answerImage.src = card.answer_image;
+            answerImage.className = "image-preview";
+            answerContainer.appendChild(answerImage);
+        } 
+
         cardContainer.appendChild(answerContainer);
         
 
@@ -41,3 +63,11 @@ fetch(`http://192.168.1.53:8000/api/deck_cards?course=${course}&deck=${deck}`, {
         cards.appendChild(cardContainer);
     });
 })
+
+function hasImage(data, state) {
+    if (data[`${state}_image`]){
+        return true
+    } else {
+        return false
+    }
+}

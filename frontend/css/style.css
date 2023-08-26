@@ -31,7 +31,7 @@ a {
 img {
     display: block;
     object-fit: contain;
-    width: 100%;
+    width: 80%;
     height: 80%;
 }
 
@@ -44,6 +44,17 @@ i {
     place-content: center;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
+.centred-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
 
 .parent-container {
     display: grid;
@@ -52,41 +63,14 @@ i {
     
     place-items: center;
 
-    grid-template-columns: 1fr 1fr;
+    
     grid-template-rows: auto;
     
-    gap: 10px;
+    gap: 30px;
 }
 
 
-.course-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    height: 25vh;
-    border-style: solid;
-    border-color: var(--global--color-secondary);
-    border-radius: 5px;
-}
-
-.course-container:hover {
-    cursor: pointer;
-}
-
-
-.deck-name {
-    transition: transform 250ms ease-in-out;
-    cursor: pointer;
-}
-
-.study-deck {
-    transition: all 250ms ease-in-out;
-    cursor: pointer;
-    
-}
-
-.deck-container {
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,7 +80,22 @@ i {
     border-style: solid;
     border-color: var(--global--color-secondary);
     border-radius: 5px;
+    
 }
+
+
+
+
+
+.deck-name {
+    transition: transform 250ms ease-in-out;
+}
+
+.study-deck {
+    transition: all 250ms ease-in-out;
+}
+
+
 
 
 #cards {
@@ -119,6 +118,11 @@ i {
 
 .card-side-preview {
     padding-left: 15px;
+    
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    grid-template-columns: 1fr;
+    overflow: hidden;
 }
 
 .card-side-preview:nth-child(1) {
@@ -142,9 +146,17 @@ i {
     border-color: var(--global--color-secondary);
 }
 
-#study {
-    cursor: pointer;
+.image-preview {
+    display: block;
+    place-self: center;
+    height: 90%;
+    width: 90%;
+    max-width: 500px;
+    max-height: 300px;
+    aspect-ratio: 16 / 9;
 }
+
+
 
 #card {
     display: grid;

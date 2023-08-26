@@ -5,7 +5,7 @@ fetch(`http://192.168.1.53:8000/api/courses/`, {method: "GET"})
 .then(data => {
     data.forEach(course => {
         let courseContainer = document.createElement("div");
-        courseContainer.className = "course-container"
+        courseContainer.className = "container pointer"
         let courseName = document.createElement("h3");
         courseName.innerText = course.name;
         courseContainer.appendChild(courseName);

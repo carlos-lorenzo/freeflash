@@ -10,6 +10,13 @@
     
     <h1 class="centred"><a href="/frontend/templates/index.html">Free Flash</a></h1>
     <div id="courses" class="parent-container"></div>
+    <div class="popup centred-absolute">
+        <form action="http://192.168.1.53:8000/api/new_course/" method="post">
+            <label for="name">name</label>
+            <input type="text" name="name">
+            <input type="submit">
+        </form>
+    </div>
     <script src="/frontend/js/getCourses.js"></script>
 </body>
 </html>

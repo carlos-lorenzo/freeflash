@@ -2,6 +2,7 @@ from random import choices
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from django.views.decorators.csrf import csrf_exempt
 
 from app.models import Course, Deck, Card
 from .serialiser import CourseSerialiser, DeckSerialiser, CardSerialiser
@@ -98,5 +99,28 @@ def update_card_confidence(request):
     
     return Response({"status": "confidence updated"})
 
+@csrf_exempt   
+@api_view(["POST",])
+def create_course(request):
+    
+    course_serializer = CourseSerialiser(data=request.data)
+    if course_serializer.is_valid():
+        course_name = request.data["name"]
+        course_names = [course.name for course in Course.objects.all()]
         
+        if course_name not in course_names:
+            item = course_serializer.save()
+            
+            return Response(course_serializer.data)
+        
+        else:
+            return Response({"status": "not created",
+                             "reason": f"{course_name} course already exists"})
+    
+    else:
+        return Response({"status": "not created",
+                         "reason": "invalid post data"})
+        
+
+# Remove course view
     

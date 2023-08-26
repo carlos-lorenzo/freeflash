@@ -15,9 +15,9 @@ fetch(`http://192.168.1.53:8000/api/course_decks/?course=${course}`, {method: "G
         
 
         let deckContainer = document.createElement("div");
-        deckContainer.className = "deck-container"
+        deckContainer.className = "container"
         let deckName = document.createElement("h3");
-        deckName.className = "deck-name";
+        deckName.className = "deck-name pointer";
         deckName.innerText = deck.name;
 
         deckName.addEventListener("click", function() {
@@ -29,7 +29,7 @@ fetch(`http://192.168.1.53:8000/api/course_decks/?course=${course}`, {method: "G
 
         
         let studyIcon = document.createElement("i");
-        studyIcon.className = "fa-solid fa-book-bookmark study-deck";
+        studyIcon.className = "fa-solid fa-book-bookmark study-deck pointer";
         studyIcon.style.opacity = 0;
 
         studyIcon.addEventListener("click", function() {

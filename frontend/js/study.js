@@ -5,26 +5,26 @@ const deck = parameters.get('deck');
 
 var state = "question";
 var confidenceColours = ["#FC7A1E", "#FFC759", "#55868C"]
-
+var card = document.getElementById("card");
+var promptText = document.getElementById("prompt-text");
 
 fetch(`http://192.168.1.53:8000/api/next_card?course=${course}&deck=${deck}`, {method: "GET"})
 .then(response => response.json())
 .then(data => {
-    
-    document.getElementById("card").style.borderColor = confidenceColours[(data.confidence - 1)];
+    card.style.borderColor = confidenceColours[(data.confidence - 1)];
 
-    document.getElementById("prompt-text").innerText = data.question;
+    promptText.innerText = data.question;
 
     updateImage(data, state);
 
-    document.getElementById("card").addEventListener("click", function(){
+    card.addEventListener("click", function(){
         if (state == "question")
         {
-            document.getElementById("prompt-text").innerText = data.answer;
+            promptText.innerText = data.answer;
 
             state = "answer";
         } else {
-            document.getElementById("prompt-text").innerText = data.question;
+            promptText.innerText = data.question;
 
             state = "question";
         }
@@ -37,11 +37,11 @@ fetch(`http://192.168.1.53:8000/api/next_card?course=${course}&deck=${deck}`, {m
         if (event.code === 'Space') {
             if (state == "question")
             {
-                document.getElementById("prompt-text").innerText = data.answer;
+                promptText.innerText = data.answer;
     
                 state = "answer";
             } else {
-                document.getElementById("prompt-text").innerText = data.question;
+                promptText.innerText = data.question;
     
                 state = "question";
             }
@@ -81,19 +81,20 @@ function updateConfidence(id, confidence) {
 function updateImage(data, state) {
     let image_path = data[`${state}_image`];
     let img = document.getElementById("prompt-image");
-
+    let prompt = document.getElementById("prompt");
+    
     if (image_path) {
         img.src = image_path;
         img.style.visibility = "visible";
 
         if (!data[state]) {
-            document.getElementById("prompt").style.gridTemplateRows = "1fr";
+            prompt.style.gridTemplateRows = "1fr";
         } else {
-            document.getElementById("prompt").style.gridTemplateRows = "1fr 3fr";
+            prompt.style.gridTemplateRows = "1fr 3fr";
         }
     } else {
         img.style.visibility = "hidden";
-        document.getElementById("prompt").style.gridTemplateRows = "1fr";
+        prompt.style.gridTemplateRows = "1fr";
     }
     
 }
