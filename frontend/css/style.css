@@ -46,6 +46,7 @@ img {
 i {
     font-size: 35px;
     z-index: 3;
+    letter-spacing: 1px;
 }
 
 form {
@@ -158,6 +159,7 @@ input[type="submit"] {
 }
 
 .study-deck {
+    scale: 0;
     transition: all 250ms ease-in-out;
 }
 

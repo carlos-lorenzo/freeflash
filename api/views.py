@@ -130,5 +130,26 @@ def create_course(request):
                          "reason": "invalid post data"})
         
 
-
+@api_view(["POST",])
+def create_deck(request):
+    if "course" not in request.data or "name" not in request.data:
+        return Response({"status": "not created",
+                         "reason": "invalid post data"})
+    else:
+        deck_name = request.data["name"]
+        course_name = request.data["course"]
+        course = Course.objects.all().filter(name=course_name)[0]
+        
+        
+        
+        if deck_name not in [deck.name for deck in Deck.objects.all().filter(course__name=course_name)]:
+        
+            deck = Deck(name=deck_name, course=course)
+            deck.save()
+        
+            return Response({"status": "deck created"})
     
+    return Response({"status": "not created",
+                     "reason": "invalid post data"})
+        
+        

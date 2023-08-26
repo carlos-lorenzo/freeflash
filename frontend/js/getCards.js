@@ -36,7 +36,9 @@ fetch(`http://192.168.1.53:8000/api/deck_cards?course=${course}&deck=${deck}`, {
             questionImage.src = card.question_image;
             questionImage.className = "image-preview";
             questionContainer.appendChild(questionImage);
-        } 
+        } else {
+            questionContainer.style.gridTemplateRows = "1fr";
+        }
         
         cardContainer.appendChild(questionContainer);
 
@@ -53,7 +55,9 @@ fetch(`http://192.168.1.53:8000/api/deck_cards?course=${course}&deck=${deck}`, {
             answerImage.src = card.answer_image;
             answerImage.className = "image-preview";
             answerContainer.appendChild(answerImage);
-        } 
+        }  else {
+            answerContainer.style.gridTemplateRows = "1fr";
+        }
 
         cardContainer.appendChild(answerContainer);
         

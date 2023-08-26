@@ -41,12 +41,14 @@ fetch(`http://192.168.1.53:8000/api/course_decks/?course=${course}`, {method: "G
             deckName.style.transform = "translate(0px, -35px)";
             
             studyIcon.style.opacity = 1;
+            studyIcon.style.scale = 1;
             studyIcon.style.transform = "translate(0px, -15px)";
         })
 
         deckContainer.addEventListener("mouseleave", function(){
             deckName.style.transform = "translate(0px, 0)";
             studyIcon.style.opacity = 0;
+            studyIcon.style.scale = 0;
             studyIcon.style.transform = "translate(0px, 0)";
             
         })
