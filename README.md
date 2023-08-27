@@ -2,7 +2,7 @@
 
 A free flashcard app to create flashcards and study them.
 <br/>
-Inspired by [Brainscape](https://www.brainscape.com) (the flashcard app I used) and its paywall blocking me from including imgaes.
+Inspired by [Brainscape](https://www.brainscape.com) (the flashcard app I used) and its paywall blocking me from including images.
 Therefore, I set out to build a clone to replicate its cruicial features, INCLUDING IMAGES.
 
 ## How to use
