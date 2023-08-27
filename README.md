@@ -5,7 +5,7 @@ Inspired by [Brainscape](https://www.brainscape.com) (the flashcard app I used) 
 Therefore, I set out to build a clone to replicate its cruicial features, INCLUDING IMAGES.
 
 ## How to use
-* Install [Phython](https://www.python.org)
+* Install [Python](https://www.python.org)
 * Install (pip) dependecies: django, django-cors-headers, djangorestframework, Pillow
 * Run "python manage.py createsuperuser" in terminal and follow instructions
 * Run "python manage.py makemigrations"
