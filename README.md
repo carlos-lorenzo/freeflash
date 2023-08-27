@@ -13,7 +13,7 @@ Therefore, I set out to build a clone to replicate its cruicial features, INCLUD
 * Run "python manage.py migrate" in terminal
 * Run "python manage.py runserver" in terminal
 * Open index.html in /frontend/templates/ (I recommend live-server within vs-code)
-* To create courses, decks and cards use the admin dashboard (in brower type: 127.0.0.1:8000/admin/) and login with your credentials
+* To create courses, decks and cards use the admin dashboard (in brower type: http://127.0.0.1:8000/admin/) and login with your credentials
 * You may also create courses and decks from the web-app
 
 ## Technical info
