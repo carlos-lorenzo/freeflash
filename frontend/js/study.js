@@ -8,6 +8,8 @@ var confidenceColours = ["#FC7A1E", "#FFC759", "#55868C"]
 var card = document.getElementById("card");
 var promptText = document.getElementById("prompt-text");
 
+
+
 fetch(`http://192.168.1.53:8000/api/next_card?course=${course}&deck=${deck}`, {method: "GET"})
 .then(response => response.json())
 .then(data => {
