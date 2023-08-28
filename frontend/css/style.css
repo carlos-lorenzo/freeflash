@@ -286,6 +286,11 @@ input[type="submit"] {
     height: 100%;
 }
 
+#deck-info {
+        
+    text-align: center;
+}
+
 @media only screen and (max-width: 1075px){
 
     #study-session {
@@ -305,10 +310,7 @@ input[type="submit"] {
         width: 90vw;
     }
 
-    #deck-info {
-        
-        text-align: center;
-    }
+    
 
     .card-side-preview:nth-child(1) {
     
