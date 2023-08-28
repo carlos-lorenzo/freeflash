@@ -2,7 +2,7 @@ var decks = document.getElementById("decks");
 const queryString = window.location.search;
 const parameters = new URLSearchParams(queryString);
 const course = parameters.get('course');
-
+var confidenceColours = ["#E99067", "#E37D16", "#004967"];
 
 fetch("/frontend/host-info.json")
     .then(response => response.json())
@@ -11,11 +11,12 @@ fetch("/frontend/host-info.json")
         fetch(`http://${hostData["host-ip"]}:${hostData["host-port"]}/api/course_decks/?course=${course}`, {method: "GET"})
         .then(response => response.json())
         .then(data => {
-            
+            console.log(data)
             data.forEach(deck => {
         
                 let deckContainer = document.createElement("div");
-                deckContainer.className = "container"
+                deckContainer.className = "container";
+                deckContainer.style.borderColor = confidenceColours[deck["mean-confidence"] - 1];
                 let deckName = document.createElement("h3");
                 deckName.className = "deck-name pointer";
                 deckName.innerText = deck.name;

@@ -44,7 +44,8 @@ def get_course_decks(request):
         decks = decks.filter(course__name=course)
         
     serialiser = DeckSerialiser(decks, many=True)
-    
+    serialiser.data[0]["mean-confidence"] = sum([card.confidence for card in Card.objects.all()]) / len(Card.objects.all())
+    print(serialiser.data)
     return Response(serialiser.data)
 
 
