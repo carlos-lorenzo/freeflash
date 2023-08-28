@@ -1,10 +1,10 @@
 :root {
-	--global--color-primary: #734B5E;
+	--global--color-primary: #0D0D12;
     --global--color-secondary: #F7F7FF;
 
-    --global--color-weak: #FC7A1E;
-    --global--color-medium: #FFC759;
-    --global--color-strong: #55868C;
+    --global--color-weak: #E99067;
+    --global--color-medium: #E37D16;
+    --global--color-strong: #004967;
 
 }
 
@@ -28,7 +28,7 @@ h1 {
 }
 
 h3 {
-    font-size: 25px;
+    font-size: 22px;
 }
 
 a {
@@ -44,7 +44,7 @@ img {
 }
 
 i {
-    font-size: 35px;
+    font-size: 25px;
     z-index: 3;
     letter-spacing: 1px;
 }
@@ -203,6 +203,7 @@ input[type="submit"] {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    place-self: center;
     gap: 25px;
 }
 
@@ -224,13 +225,17 @@ input[type="submit"] {
     aspect-ratio: 16 / 9;
 }
 
-
+#study-session {
+    display: grid;
+    grid-template-rows: 6fr 1fr;
+    gap: 25px;
+}
 
 #card {
     display: grid;
     background-color: var(--global--color-primary);
     width: 90vw;
-    height: 65vh;
+    
     border: 5px solid;
     border-radius: 5px;
     margin-bottom: 15px;
@@ -240,7 +245,7 @@ input[type="submit"] {
 #confidence-form {
     display: grid;
     width: 90vw;
-    height: 20vh;
+    
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     place-items: center;
@@ -283,6 +288,11 @@ input[type="submit"] {
 
 @media only screen and (max-width: 1075px){
 
+    #study-session {
+        display: grid;
+        grid-template-rows: 3fr 2fr;
+    }
+
     .parent-container{
         grid-template-columns: 1fr;
     }
@@ -295,6 +305,11 @@ input[type="submit"] {
         width: 90vw;
     }
 
+    #deck-info {
+        
+        text-align: center;
+    }
+
     .card-side-preview:nth-child(1) {
     
         border-right: 0px dashed;
@@ -303,7 +318,6 @@ input[type="submit"] {
 
     #confidence-form {
         
-        height: 40vh;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         

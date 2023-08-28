@@ -3,6 +3,7 @@
 fetch("/frontend/host-info.json")
     .then(response => response.json())
     .then(hostData => {
+        console.log(hostData);
         // Fetch CSRF token from Django server
         fetch(`http://${hostData["host-ip"]}:${hostData["host-port"]}/api/get_csrf_token/`)  
         .then(response => response.json())

@@ -4,10 +4,16 @@ const course = parameters.get('course');
 const deck = parameters.get('deck');
 
 var state = "question";
-var confidenceColours = ["#FC7A1E", "#FFC759", "#55868C"]
+var confidenceColours = ["#E99067", "#E37D16", "#004967"];
 var card = document.getElementById("card");
 var promptText = document.getElementById("prompt-text");
 
+let deckInfo = document.getElementById("deck-info");
+deckInfo.className = "pointer"
+deckInfo.innerText = `${course} - ${deck}`;
+deckInfo.addEventListener("click", function() {
+    window.open(`deckCards.html?course=${course}&deck=${deck}`, "_self");
+})
 
 fetch("/frontend/host-info.json")
     .then(response => response.json())
