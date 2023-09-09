@@ -44,14 +44,8 @@ def get_course_decks(request):
         decks = decks.filter(course__name=course)
         
     serialiser = DeckSerialiser(decks, many=True)
-    
-    
-    for i, deck in enumerate(serialiser.data):
-        deck_cards = Card.objects.all().filter(deck=dict(deck).get("id"))
-        if len(deck_cards) > 0: 
-            serialiser.data[i]["mean-confidence"] = sum([card.confidence for card in deck_cards]) // len(deck_cards)
-    
-    
+    serialiser.data[0]["mean-confidence"] = sum([card.confidence for card in Card.objects.all()]) // len(Card.objects.all())
+    print(serialiser.data)
     return Response(serialiser.data)
 
 
