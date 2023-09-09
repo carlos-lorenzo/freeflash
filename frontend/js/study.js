@@ -43,7 +43,9 @@ fetch("/frontend/host-info.json")
             })
         
             document.addEventListener('keyup', event => {
-        
+                
+                let confidence = 0
+
                 if (event.code === 'Space') {
                     if (state == "question")
                     {
@@ -57,27 +59,29 @@ fetch("/frontend/host-info.json")
                     }
             
                     updateImage(data, state);
-        
+                    
                 } else if (event.code === "Digit1") {
-                    updateConfidence(data.id, 1);
+                    confidence = 1;
+                    
         
                 } else if (event.code === "Digit2") {
-                    updateConfidence(data.id, 2);
+                    confidence = 2;
         
                 } else if (event.code === "Digit3") {
-                    updateConfidence(data.id, 3);
+                    confidence = 3;
         
                 } 
-        
                 
-        
+                updateConfidence(data.id, confidence, hostData);
+                
+                
               })
         
             let confidences = document.getElementsByClassName("confidence")
         
             for (let i = 0; i < confidences.length; i++) {
                 confidences[i].addEventListener("click", function(){
-                    updateConfidence(data.id, confidences[i].id);
+                    updateConfidence(data.id, confidences[i].id, hostData);
                 })
             }
             
@@ -87,8 +91,8 @@ fetch("/frontend/host-info.json")
 
 
 
-function updateConfidence(id, confidence) {
-    fetch(`http://192.168.1.53:8000/api/update_confidence?id=${id}&confidence=${confidence}`, {method: "GET"})
+function updateConfidence(id, confidence, hostData) {
+    fetch(`http://${hostData["host-ip"]}:${hostData["host-port"]}/api/update_confidence?id=${id}&confidence=${confidence}`, {method: "GET"})
     window.location.reload();
 }
 

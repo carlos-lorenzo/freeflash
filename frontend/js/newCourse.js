@@ -17,7 +17,7 @@ fetch("/frontend/host-info.json")
     
                 const formData = new FormData(form);
     
-                fetch(form.action, {
+                fetch(`http://${hostData["host-ip"]}:${hostData["host-port"]}/api/new_course/`, {
                     method: 'POST',
                     headers: {
                         'X-CSRFToken': csrftoken
