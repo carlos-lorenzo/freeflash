@@ -183,6 +183,7 @@ input[type="submit"]:hover {
 
 #cards {
     display: grid;
+    margin: 25px;
     gap: 10px;
 }
 

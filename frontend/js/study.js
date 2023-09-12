@@ -47,7 +47,7 @@ fetch("/frontend/host-info.json")
                 let confidence = 0
 
                 if (event.code === 'Space') {
-                    if (state == "question")
+                    if (state === "question")
                     {
                         promptText.innerText = data.answer;
             
